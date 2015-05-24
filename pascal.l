@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "y.tab.h"
 
 #define HASH_SIZE 1000007
@@ -20,6 +21,18 @@ int BKDRhash(char *s)
 	}
 	return res;
 }
+
+int isInteger(char *s) {
+	int head = 0;
+	if (s[0]=='+' || s[0]=='-') head = 1;
+	int i;
+	int n = strlen(s);
+	for (i = head; i<n; ++i) {
+		if (!isdigit(s[i])) return 0;
+	}
+	return 1;
+}
+
 %}
 
 dot 		"."
@@ -27,9 +40,6 @@ program	"program"
 semi		";"
 const		"const"
 equal		"="
-integer		\b[0-9]+\b
-real 		\b[0-9]+\b\.\b[0-9]+\b
-var_name	\b[A-Za-z]([A-Za-z]|_|[0-9])*\b
 sys_con		"true"|"false"|"maxint"
 type		"type"
 lp			"("
@@ -41,7 +51,7 @@ sys_type	"boolean"|"char"|"integer"|"real"
 array		"array"
 of			"of"
 record		"record"
-end			"end"
+end		"end"
 comma		","
 colon		":"
 assign		"assign"
@@ -78,6 +88,7 @@ procedure	"procedure"
 while		"while"
 not			"not"
 label		"label"
+word		[A-za-z0-9]+("."[A-za-z0-9]+)*
 
 %%
 
@@ -104,25 +115,12 @@ label		"label"
 	if (cnt>1) return STRING;
 	else return CHAR;
 }
-{var_name} {
-// figure whether it is id or name
-	printf("var_name :  %s\n", yytext);
-	if (name_part) {
-		hashTable[BKDRhash(yytext)] = 1;
-		return NAME;
-	}
-	else {
-		if (hashTable[BKDRhash(yytext)]) return NAME;
-		else return ID;
-	}
-}
+
 {dot} { return DOT; }
 {program} { return PROGRAM; }
 {semi} { return SEMI; }
 {const} { name_part = 1; return CONST; }
 {equal} { return EQUAL; }
-{integer} { return INTEGER; }
-{real} { return REAL; }
 {sys_con} { return SYS_CON; }
 {type}	{ name_part = 1; return TYPE;}
 {lp}		{return LP;}
@@ -171,7 +169,53 @@ label		"label"
 {while}		{return WHILE;}
 {not}		{return NOT;}
 {label}		{return LABEL;}
+{word} {
+// figure whether it is ID/NAME/INTEGER/REAL
+	int i;
+	int n = strlen(yytext);
+	if (isalpha(yytext[0]) || yytext[0]=='_') { //id name 
+		int noDot = 1;
+		for (i = 0; i<n; ++i) {
+			if (yytext[i]=='.') {
+				noDot = 0;
+				break;
+			}
+		}
+		if (noDot) {
+			if (name_part) {
+				hashTable[BKDRhash(yytext)] = 1;
+				return NAME;
+			}
+			else {
+				if (hashTable[BKDRhash(yytext)]) return NAME;
+				else return ID;
+			}
+		}
+	}
+	else { //integer real
+		if (yytext[0]=='+' || yytext[0]=='-' && n>1) {
 
+		}
+		else {
+			if (isInteger(yytext))  return INTEGER;
+			char a[256] = {0}, b[256] = {0};
+			int dot = -1;
+			for (i = 0; i<n; ++i) {
+				if (yytext[i]=='.' || yytext[i]=='e' || yytext[i]=='E')  {
+					dot = i;
+					break;
+				}
+				a[i] = yytext[i];
+			}
+			if (dot>0 && dot!=n-1) {
+				for (i = dot+1; i<n; ++i) {
+					b[i-dot-1] = yytext[i];
+				}
+				if (isInteger(a) && isInteger(b)) return REAL;
+			}
+		}
+	}
+}
 %%
 
 int yywrap(void) {

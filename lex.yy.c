@@ -1217,6 +1217,8 @@ YY_RULE_SETUP
 #line 172 "pascal.l"
 {
 // figure whether it is ID/NAME/INTEGER/REAL
+	puts("get word:");
+	puts(yytext);
 	int i;
 	int n = strlen(yytext);
 	if (isalpha(yytext[0]) || yytext[0]=='_') { //id name 
@@ -1234,7 +1236,10 @@ YY_RULE_SETUP
 			}
 			else {
 				if (hashTable[BKDRhash(yytext)]) return NAME;
-				else return ID;
+				else {
+					puts("it is ID");
+					return ID;
+				}
 			}
 		}
 	}
@@ -1265,10 +1270,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 219 "pascal.l"
+#line 224 "pascal.l"
 ECHO;
 	YY_BREAK
-#line 1272 "lex.yy.c"
+#line 1277 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2266,7 +2271,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 219 "pascal.l"
+#line 224 "pascal.l"
 
 
 

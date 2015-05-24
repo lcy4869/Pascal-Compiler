@@ -171,6 +171,8 @@ word		[A-za-z0-9]+("."[A-za-z0-9]+)*
 {label}		{return LABEL;}
 {word} {
 // figure whether it is ID/NAME/INTEGER/REAL
+	//puts("get word:");
+	//puts(yytext);
 	int i;
 	int n = strlen(yytext);
 	if (isalpha(yytext[0]) || yytext[0]=='_') { //id name 
@@ -188,7 +190,9 @@ word		[A-za-z0-9]+("."[A-za-z0-9]+)*
 			}
 			else {
 				if (hashTable[BKDRhash(yytext)]) return NAME;
-				else return ID;
+				else {
+					return ID;
+				}
 			}
 		}
 	}

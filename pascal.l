@@ -83,17 +83,14 @@ label		"label"
 
 "{" {
 // brackets comment
-	ECHO;
 	char c;
 	while (1) {
 		c = input();
-		putchar(c);
 		if (c=='}') break;
 	}
 }
 "//".*\n {
 // one-line comment
-	ECHO;
 }
 "\'" { 
 // recognize word string first. 

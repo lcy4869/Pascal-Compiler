@@ -877,11 +877,9 @@ YY_RULE_SETUP
 #line 84 "pascal.l"
 {
 // brackets comment
-	ECHO;
 	char c;
 	while (1) {
 		c = input();
-		putchar(c);
 		if (c=='}') break;
 	}
 }
@@ -889,15 +887,14 @@ YY_RULE_SETUP
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 94 "pascal.l"
+#line 92 "pascal.l"
 {
 // one-line comment
-	ECHO;
 }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 98 "pascal.l"
+#line 95 "pascal.l"
 { 
 // recognize word string first. 
 	char c;
@@ -913,7 +910,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 110 "pascal.l"
+#line 107 "pascal.l"
 {
 // figure whether it is id or name
 	printf("var_name :  %s\n", yytext);
@@ -929,285 +926,285 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 122 "pascal.l"
+#line 119 "pascal.l"
 { return DOT; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 123 "pascal.l"
+#line 120 "pascal.l"
 { return PROGRAM; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 124 "pascal.l"
+#line 121 "pascal.l"
 { return SEMI; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 125 "pascal.l"
+#line 122 "pascal.l"
 { name_part = 1; return CONST; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 126 "pascal.l"
+#line 123 "pascal.l"
 { return EQUAL; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 127 "pascal.l"
+#line 124 "pascal.l"
 { return INTEGER; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 128 "pascal.l"
+#line 125 "pascal.l"
 { return REAL; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 129 "pascal.l"
+#line 126 "pascal.l"
 { return SYS_CON; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 130 "pascal.l"
+#line 127 "pascal.l"
 { name_part = 1; return TYPE;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 131 "pascal.l"
+#line 128 "pascal.l"
 {return LP;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 132 "pascal.l"
+#line 129 "pascal.l"
 {return RP;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 133 "pascal.l"
+#line 130 "pascal.l"
 {return LB;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 134 "pascal.l"
+#line 131 "pascal.l"
 {return RB;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 135 "pascal.l"
+#line 132 "pascal.l"
 {return DOTDOT;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 136 "pascal.l"
+#line 133 "pascal.l"
 {return SYS_TYPE;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 137 "pascal.l"
+#line 134 "pascal.l"
 {return ARRAY;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 138 "pascal.l"
+#line 135 "pascal.l"
 {return OF;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 139 "pascal.l"
+#line 136 "pascal.l"
 {return RECORD;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 140 "pascal.l"
+#line 137 "pascal.l"
 {return END;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 141 "pascal.l"
+#line 138 "pascal.l"
 {return COMMA;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 142 "pascal.l"
+#line 139 "pascal.l"
 {return COLON;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 143 "pascal.l"
+#line 140 "pascal.l"
 {return ASSIGN;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 144 "pascal.l"
+#line 141 "pascal.l"
 {name_part = 0; return BEGIN2;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 145 "pascal.l"
+#line 142 "pascal.l"
 {return SYS_PROC;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 146 "pascal.l"
+#line 143 "pascal.l"
 {return READ;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 147 "pascal.l"
+#line 144 "pascal.l"
 {return IF;}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 148 "pascal.l"
+#line 145 "pascal.l"
 {return THEN;}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 149 "pascal.l"
+#line 146 "pascal.l"
 {return ELSE;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 150 "pascal.l"
+#line 147 "pascal.l"
 {return REPEAT;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 151 "pascal.l"
+#line 148 "pascal.l"
 {return UNTIL;}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 152 "pascal.l"
+#line 149 "pascal.l"
 {return FOR;}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 153 "pascal.l"
+#line 150 "pascal.l"
 {return DO;}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 154 "pascal.l"
+#line 151 "pascal.l"
 {return TO;}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 155 "pascal.l"
+#line 152 "pascal.l"
 {return DOWNTO;}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 156 "pascal.l"
+#line 153 "pascal.l"
 {return CASE;}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 157 "pascal.l"
+#line 154 "pascal.l"
 {return GOTO;}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 158 "pascal.l"
+#line 155 "pascal.l"
 {return GE;}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 159 "pascal.l"
+#line 156 "pascal.l"
 {return GT;}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 160 "pascal.l"
+#line 157 "pascal.l"
 {return LE;}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 161 "pascal.l"
+#line 158 "pascal.l"
 {return LT;}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 162 "pascal.l"
+#line 159 "pascal.l"
 {return UNEQUAL;}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 163 "pascal.l"
+#line 160 "pascal.l"
 {return PLUS;}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 164 "pascal.l"
+#line 161 "pascal.l"
 {return MINUS;}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 165 "pascal.l"
+#line 162 "pascal.l"
 {return MUL;}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 166 "pascal.l"
+#line 163 "pascal.l"
 {return MOD;}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 167 "pascal.l"
+#line 164 "pascal.l"
 {return DIV;}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 168 "pascal.l"
+#line 165 "pascal.l"
 {return AND;}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 169 "pascal.l"
+#line 166 "pascal.l"
 {return OR;}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 170 "pascal.l"
+#line 167 "pascal.l"
 {return SYS_FUNCT;}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 171 "pascal.l"
+#line 168 "pascal.l"
 { name_part = 0; return VAR;}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 172 "pascal.l"
+#line 169 "pascal.l"
 { name_part = 0; return FUNCTION;}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 173 "pascal.l"
+#line 170 "pascal.l"
 { name_part = 0; return PROCEDURE;}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 174 "pascal.l"
+#line 171 "pascal.l"
 {return WHILE;}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 175 "pascal.l"
+#line 172 "pascal.l"
 {return NOT;}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 176 "pascal.l"
+#line 173 "pascal.l"
 {return LABEL;}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 178 "pascal.l"
+#line 175 "pascal.l"
 ECHO;
 	YY_BREAK
-#line 1211 "lex.yy.c"
+#line 1208 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2205,7 +2202,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 178 "pascal.l"
+#line 175 "pascal.l"
 
 
 

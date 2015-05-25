@@ -111,8 +111,6 @@ var_decl :  name_list  COLON  type_decl  SEMI;
 
 routine_part:  routine_part  function_decl
 			|  routine_part  procedure_decl
-        	|  function_decl
-        	|  procedure_decl
         	|;
 function_decl : function_head  SEMI  sub_routine  SEMI;
 function_head :  FUNCTION  ID  parameters  COLON  simple_type_decl;

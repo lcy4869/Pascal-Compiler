@@ -36,7 +36,7 @@ int isInteger(char *s) {
 %}
 
 dot 		"."
-program	"program"
+program		"program"
 semi		";"
 const		"const"
 equal		"="
@@ -51,7 +51,7 @@ sys_type	"boolean"|"char"|"integer"|"real"
 array		"array"
 of			"of"
 record		"record"
-end		"end"
+end			"end"
 comma		","
 colon		":"
 assign		"assign"
@@ -60,7 +60,7 @@ sys_proc	"write"|"writeln"
 read		"read"
 if			"if"
 then		"then"
-else			"else"
+else		"else"
 repeat		"repeat"
 until		"until"
 for			"for"
@@ -73,11 +73,11 @@ ge			">="
 gt			">"
 le			"<="
 lt			"<"
-unequal	"<>"
+unequal		"<>"
 plus		"+"
 minus		"-"
 mul			"*"
-mod		"mod"
+mod			"mod"
 div			"div"
 and			"and"
 or			"or"
@@ -219,6 +219,10 @@ word		[A-za-z0-9]+("."[A-za-z0-9]+)*
 			}
 		}
 	}
+}
+.|\n {
+	//Other
+	//puts("catch");
 }
 %%
 

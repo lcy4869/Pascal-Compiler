@@ -17,7 +17,7 @@ clean_o:
 	rm -rf *.o
 
 clean:
-	rm -rf *.o y.tab.c lex.yy.c y.tab.out lex.yy.out *~ y.output
+	rm -rf *.o y.tab.c lex.yy.c y.tab.out lex.yy.out *~ y.output y.tab.h
 
 test_lex: lex.yy.o test_lex.c
 	gcc -c test_lex.c

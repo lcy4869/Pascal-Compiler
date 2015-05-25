@@ -1,4 +1,4 @@
-#include "lex.yy.h"
+#include "../lex.yy.h"
 #include <stdio.h>
 int main(){
 	int rt=-1;

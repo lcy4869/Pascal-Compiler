@@ -17,11 +17,11 @@ clean_o:
 	rm -rf *.o
 
 clean:
-	rm -rf *.o y.tab.c lex.yy.c y.tab.out lex.yy.out *~ y.output y.tab.h
+	rm -rf *.o y.tab.c lex.yy.c *~ y.output y.tab.h *.out
 
-test_lex: lex.yy.o test_lex.c
-	gcc -c test_lex.c
-	gcc test_lex.o lex.yy.o -o lex.yy.out
+test_lex: lex.yy.o tools/test_lex.c
+	gcc -c tools/test_lex.c
+	gcc test_lex.o lex.yy.o -o tools/lex.yy.out
 
 test:
-	./lex.yy.out < sample/test.pas | tools/token.py ./y.tab.h
+	tools/lex.yy.out < sample/test.pas | tools/token.py ./y.tab.h

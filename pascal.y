@@ -118,8 +118,9 @@ procedure_decl :  procedure_head  SEMI  sub_routine  SEMI;
 procedure_head :  PROCEDURE ID parameters ;
 parameters	: LP  para_decl_list  RP
 			|;
-para_decl_list : para_decl_list  SEMI  para_type_list;
-para_type_list	: var_para_list COLON  simple_type_decl 
+para_decl_list  :  para_decl_list SEMI para_type_list
+				|  para_type_list;
+para_type_list	:  var_para_list COLON  simple_type_decl 
 				|  val_para_list  COLON  simple_type_decl;
 var_para_list : VAR  name_list;
 val_para_list : name_list;
@@ -187,7 +188,8 @@ factor	:  NAME
 		|  NOT  factor
 		|  MINUS  factor
 		|  ID  LB  expression  RB
-		|  ID  DOT  ID;
+		|  ID  DOT  ID
+		|  ID;
 args_list	: args_list  COMMA  expression
 			|  expression;
 

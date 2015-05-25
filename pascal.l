@@ -54,7 +54,7 @@ record		"record"
 end			"end"
 comma		","
 colon		":"
-assign		"assign"
+assign		":="
 begin		"begin"
 sys_proc	"write"|"writeln"
 read		"read"
@@ -88,7 +88,7 @@ procedure	"procedure"
 while		"while"
 not			"not"
 label		"label"
-word		[A-za-z0-9]+("."[A-za-z0-9]+)*
+word		[A-Za-z0-9]+("."[A-Za-z0-9]+)*
 
 %%
 
@@ -170,9 +170,8 @@ word		[A-za-z0-9]+("."[A-za-z0-9]+)*
 {not}		{return NOT;}
 {label}		{return LABEL;}
 {word} {
-// figure whether it is ID/NAME/INTEGER/REAL
-	//puts("get word:");
-	//puts(yytext);
+	//figure whether it is ID/NAME/INTEGER/REAL
+	//fprintf(stderr, "word: %s\n", yytext);
 	int i;
 	int n = strlen(yytext);
 	if (isalpha(yytext[0]) || yytext[0]=='_') { //id name 
